@@ -6,20 +6,15 @@ const gameRoutes = require('./routes/gameRoutes');
 const app = express();
 const PORT = 3000;
 
-// Парсинг тела запроса
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Собственный middleware
 app.use(logger);
 
-// Статические файлы (страничка игры)
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// Префикс для API
 app.use('/api', gameRoutes);
 
-// Простой health-check
 app.get('/ping', (req, res) => {
   res.send('Server is alive');
 });

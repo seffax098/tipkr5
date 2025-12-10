@@ -12,7 +12,9 @@ body {
   cursor: pointer;
 }
 
-.panel, .upgrades, .stats {
+.panel,
+.upgrades,
+.stats {
   margin: 10px 0;
 }
 

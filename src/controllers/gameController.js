@@ -1,7 +1,5 @@
 const { getPlayer, getAllPlayers } = require('../data/gameData');
 
-// GET /api/status?playerId=user1
-// Пример использования req.query
 function getStatus(req, res) {
     const { playerId } = req.query;
     if (!playerId) {
@@ -12,8 +10,6 @@ function getStatus(req, res) {
     res.json(player);
 }
 
-// POST /api/click
-// Body: { "playerId": "user1", "amount": 1 }
 function addClick(req, res) {
     const { playerId, amount = 1 } = req.body;
 
@@ -22,7 +18,7 @@ function addClick(req, res) {
     }
 
     const player = getPlayer(playerId);
-    const power = player.clickPower || 1; // <-- вот этого не хватало
+    const power = player.clickPower || 1;
 
     player.clicks += (Number(amount) || 1) * power;
 
@@ -33,9 +29,6 @@ function addClick(req, res) {
 }
 
 
-// POST /api/upgrade/:type
-// Пример использования req.params
-// type: "level" или "autoClicker"
 function buyUpgrade(req, res) {
     const { type } = req.params;
     const { playerId } = req.body;
@@ -78,8 +71,6 @@ function buyUpgrade(req, res) {
     return res.status(400).json({ error: 'Неизвестный тип апгрейда' });
 }
 
-// GET /api/leaderboard/:limit?
-// Пример использования req.params (limit) и sort
 function getLeaderboard(req, res) {
     const limit = req.params.limit ? Number(req.params.limit) : 10;
 
@@ -95,8 +86,6 @@ function getLeaderboard(req, res) {
 
 
 
-// DELETE /api/player/:playerId
-// Пример DELETE + req.params
 const { players } = require('../data/gameData');
 function resetPlayer(req, res) {
     const { playerId } = req.params;

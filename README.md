@@ -20,6 +20,4 @@
 
 ```bash
 npm install
-npm run dev   # запуск в режиме разработки
-# или
-npm start
+npm run dev
