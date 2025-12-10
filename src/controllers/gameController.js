@@ -22,6 +22,8 @@ function addClick(req, res) {
     }
 
     const player = getPlayer(playerId);
+    const power = player.clickPower || 1; // <-- вот этого не хватало
+
     player.clicks += (Number(amount) || 1) * power;
 
     res.json({
@@ -29,6 +31,7 @@ function addClick(req, res) {
         player
     });
 }
+
 
 // POST /api/upgrade/:type
 // Пример использования req.params
